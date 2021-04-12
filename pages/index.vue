@@ -1,6 +1,16 @@
 <template>
   <div class="bg-gray-300 w-screen min-h-screen">
-    <div class="container w-full" v-if="info != null" >
+    <div v-if="info == null" class="flex flex-col justify-center items-center w-screen min-h-screen">
+      <button type="button" class="bg-gray-100 flex p-2 rounded-md mb-5" disabled>
+        <svg xmlns="http://www.w3.org/2000/svg" class="animate-spin mr-3 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        </svg>
+        Loading
+      </button>
+      <p class="italic">"{{ qoutes[Math.floor(Math.random() * 2)] }}"</p>
+      <span class="text-xs">-Mang Udin</span>
+    </div>
+    <div class="container w-full" v-if="info != null">
       <div class="flex justify-center">
         <div>
           <h1 class="font-bold text-2xl text-center mt-4">Info Gempa Terkini</h1> 
@@ -49,7 +59,7 @@
 
 
             </div>
-              <div class="flex items-center space-x-3">
+              <div class="flex items-center space-x-3 relative">
                 <svg xmlns="http://www.w3.org/2000/svg" class="text-red-600 h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
@@ -92,12 +102,12 @@
         </div>
       </div>
     </div>
-    <a href="https://saweria.co/raflidev" target="_blank" class="hidden md:block fixed right-5 bottom-36 md:bottom-5 rounded bg-yellow-400 px-5 py-2">
+    <a href="https://saweria.co/raflidev" v-if="info != null" target="_blank" class="hidden md:block fixed right-5 bottom-36 md:bottom-5 rounded bg-yellow-400 px-5 py-2">
    
         <p>Belikan saya kopi ☕</p>
         Via <span class="font-bold">Saweria 😄</span>
     </a>
-    <a href="https://saweria.co/raflidev" target="_blank" class="text-center block md:hidden rounded bg-yellow-400 px-5 py-2">
+    <a href="https://saweria.co/raflidev" v-if="info != null" target="_blank" class="text-center block md:hidden rounded bg-yellow-400 px-5 py-2">
         <p>Belikan saya kopi ☕</p>
         Via <span class="font-bold">Saweria 😄</span>
     </a>
@@ -113,14 +123,15 @@ export default {
     return{
       info:null,
       items:[],
-      index: null
+      index: null,
+      qoutes:['nungguin ya??','yuk bisa yuk','kuliah ceriya-ceriya 😄','deadline besok :(']
     }
   },
   async mounted(){
       var data = await (await axios.get("https://data.bmkg.go.id/DataMKG/TEWS/autogempa.xml")).data
       this.info = JSON.parse(xmljs.xml2json(data,{compact:true,spaces:2}))
       this.items.push(`https://data.bmkg.go.id/DataMKG/TEWS/${this.info.Infogempa.gempa.Shakemap._text}`)
-  }
+  },
 }
 </script>
 
