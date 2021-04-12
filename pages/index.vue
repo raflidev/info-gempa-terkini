@@ -1,10 +1,10 @@
 <template>
   <div class="bg-gray-300 w-screen min-h-screen">
-    <div class="w-full" v-if="info != null" >
+    <div class="container w-full" v-if="info != null" >
       <div class="flex justify-center">
         <div>
           <h1 class="font-bold text-2xl text-center mt-4">Info Gempa Terkini</h1> 
-          <div class="my-5">
+          <div class="my-5 px-3">
             <p><span class="font-bold">Tanggal : </span>{{info.Infogempa.gempa.Tanggal._text}}</p>
             <p><span class="font-bold">Jam : </span>{{info.Infogempa.gempa.Jam._text}}</p>
             <p><span class="font-bold">Magnitude : </span>{{info.Infogempa.gempa.Magnitude._text}}</p>
@@ -32,9 +32,20 @@
               :style="{ backgroundImage: 'url(' + image + ')' }"
             ></div>
           </div>
+
+          <p class="font-medium italic py-4 text-center">Data diambil dari lembaga BMKG (Badan Meteorologi, Klimatologi, dan Geofisika)</p>
         </div>
       </div>
     </div>
+    <a href="https://saweria.co/raflidev" target="_blank" class="fixed right-5 bottom-36 md:bottom-5 rounded bg-yellow-400 px-5 py-2">
+    <div class="hidden md:block">
+        <p>Belikan saya kopi ☕</p>
+        Via <span class="font-bold">Saweria 😄</span>
+    </div>
+    <div class="block md:hidden">
+      <p>Belikan Saya ☕😄</p>
+    </div>
+    </a>
   </div>
 </template>
 
@@ -47,10 +58,6 @@ export default {
     return{
       info:null,
       items:[],
-      // items: [
-      //   'https://www.gotravelly.com/blog/wp-content/uploads/2019/10/Gunung-Fuji-Jepang-1024x640.jpg',
-      //   'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/nature-quotes-1557340276.jpg?crop=0.666xw:1.00xh;0.168xw,0&resize=640:*',
-      // ],
       index: null
     }
   },
@@ -68,11 +75,24 @@ export default {
   justify-content:center;  
 }
 
+
+@media only screen and (max-width: 600px) {
+ .images-wrapper .image {
+  min-width: 300px;
+  min-height: 300px;
+  background-size: cover;
+  }
+}
+@media only screen and (min-width: 600px) {
+ 
 .images-wrapper .image {
   min-width: 600px;
   min-height: 720px;
   background-size: auto;
 }
+}
+
+
 
 .images-wrapper-divs {
   margin-bottom: 40px;
