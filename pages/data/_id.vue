@@ -10,7 +10,7 @@
     </div>  
   
     <div  v-if="data_gempa != null" class="flex py-5 items-center justify-center space-x-10">
-      <iframe
+      <iframe v-if="process.env.GOOGLE_API"
         width="500"
         height="600"
         frameborder="0" style="border:0"
