@@ -10,11 +10,11 @@
     </div>  
   
     <div  v-if="data_gempa != null" class="flex py-5 items-center justify-center space-x-10">
-      <iframe v-if="process.env.GOOGLE_API"
+      <iframe
         width="500"
         height="600"
         frameborder="0" style="border:0"
-        :src="`https://www.google.com/maps/embed/v1/view?key=${process.env.GOOGLE_API}&center=${data_gempa[this.$route.params.id - 1].detail.koordinat}&zoom=7&maptype=satellite`" allowfullscreen>
+        :src="`https://www.google.com/maps/embed/v1/view?key=AIzaSyCBsWcQJiEmoNEY3XJZCTEfdxU-jkfyn4M&center=${data_gempa[this.$route.params.id - 1].detail.koordinat}&zoom=7&maptype=satellite`" allowfullscreen>
       </iframe>
 
       <CoolLightBox 
