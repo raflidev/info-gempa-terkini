@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-300 w-screen min-h-screen">
+  <div class="bg-gray-300 min-h-screen">
     <div v-if="info == null" class="flex flex-col justify-center items-center w-screen min-h-screen">
       <button type="button" class="bg-gray-100 flex p-2 rounded-md mb-5" disabled>
         <svg xmlns="http://www.w3.org/2000/svg" class="animate-spin mr-3 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
