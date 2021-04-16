@@ -1,6 +1,6 @@
 <template>
   <div>
-      asd
+      fiturnya ntar dulu pak
   </div>
 </template>
 
