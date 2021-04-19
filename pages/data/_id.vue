@@ -14,7 +14,7 @@
         width="500"
         height="600"
         frameborder="0" style="border:0"
-        :src="`https://www.google.com/maps/embed/v1/view?key=AIzaSyCBsWcQJiEmoNEY3XJZCTEfdxU-jkfyn4M&center=${data_gempa[this.$route.params.id - 1].detail.koordinat}&zoom=7&maptype=satellite`" allowfullscreen>
+        :src="`https://www.google.com/maps/embed/v1/view?key=${api}&center=${data_gempa[this.$route.params.id - 1].detail.koordinat}&zoom=7&maptype=satellite`" allowfullscreen>
       </iframe>
 
       <CoolLightBox 
@@ -46,13 +46,15 @@ data(){
   return{
     items:[],
     index: null,
-    data_gempa: null
+    data_gempa: null,
+    api:null
   }
 },
 async mounted(){
   this.data_gempa = await (await axios.get("https://data-gempa-terkini.herokuapp.com/")).data
   console.log(this.data_gempa);
   this.items.push(`https://data.bmkg.go.id/DataMKG/TEWS/${this.data_gempa[this.$route.params.id - 1].detail.map}`)
+  this.api = process.env.GOOGLE_API
 }
 }
 </script>
