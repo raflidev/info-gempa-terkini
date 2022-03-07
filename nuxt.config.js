@@ -38,6 +38,11 @@ export default {
   modules: [
     '@nuxtjs/axios'
   ],
+  axios: {
+    baseURL: 'https://data.bmkg.go.id',
+    proxyHeaders: false,
+    credentials: false
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

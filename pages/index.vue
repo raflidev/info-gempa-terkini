@@ -128,8 +128,8 @@ export default {
     }
   },
   async mounted(){
-      var data = await (await axios.get("https://data.bmkg.go.id/DataMKG/TEWS/autogempa.xml")).data
-      this.info = JSON.parse(xmljs.xml2json(data,{compact:true,spaces:2}))
+      this.info = await (await axios.get("https://data-gempa-terkini.herokuapp.com/autogempa")).data
+      // this.info = JSON.parse(xmljs.xml2json(data,{compact:true,spaces:2}))
       this.items.push(`https://data.bmkg.go.id/DataMKG/TEWS/${this.info.Infogempa.gempa.Shakemap._text}`)
   },
 }
