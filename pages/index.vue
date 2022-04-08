@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-300 min-h-screen">
+  <div class="bg-gray-300 min-h-screen pb-32">
     <div v-if="info == null" class="flex flex-col justify-center items-center w-screen min-h-screen">
       <button type="button" class="bg-gray-100 flex p-2 rounded-md mb-5" disabled>
         <svg xmlns="http://www.w3.org/2000/svg" class="animate-spin mr-3 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -7,7 +7,7 @@
         </svg>
         Loading
       </button>
-      <p class="italic">"{{ qoutes[Math.floor(Math.random() * 2)] }}"</p>
+      <p class="italic">"{{ qoutes[Math.floor(Math.random() * 3)] }}"</p>
       <span class="text-xs">-Mang Udin</span>
     </div>
     <div class="container w-full" v-if="info != null">
@@ -102,21 +102,11 @@
         </div>
       </div>
     </div>
-    <a href="https://saweria.co/raflidev" v-if="info != null" target="_blank" class="hidden md:block fixed right-5 bottom-36 md:bottom-5 rounded bg-yellow-400 px-5 py-2">
-   
-        <p>Belikan saya kopi ☕</p>
-        Via <span class="font-bold">Saweria 😄</span>
-    </a>
-    <a href="https://saweria.co/raflidev" v-if="info != null" target="_blank" class="text-center block md:hidden rounded bg-yellow-400 px-5 py-2">
-        <p>Belikan saya kopi ☕</p>
-        Via <span class="font-bold">Saweria 😄</span>
-    </a>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import xmljs from 'xml-js'
 export default {
   name: "index",
   data(){
