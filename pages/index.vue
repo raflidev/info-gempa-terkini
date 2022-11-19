@@ -13,7 +13,7 @@
     <div class="container w-full" v-if="info != null">
       <div class="flex justify-center">
         <div>
-          <h1 class="font-bold text-2xl text-center mt-4">Info Gempa Terkini</h1> 
+          <h1 class="font-bold text-2xl text-center mt-4">Info Gempa Terkini</h1>
           <div class="my-5 px-3">
             <div class="h-40 grid grid-cols-2">
               <div class="flex items-center space-x-3">
@@ -67,23 +67,23 @@
                   <p class="font-bold">{{info.Infogempa.gempa.Wilayah._text}}</p>
                 </div>
               </div>
-            
+
               <div class="flex items-center space-x-3">
                 <svg xmlns="http://www.w3.org/2000/svg" class="text-purple-700 h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <div>
-                  <p class="font-bold">Dirasakan : 
+                  <p class="font-bold">Dirasakan :
                     <span class="bg-red-600 text-white rounded mr-2 p-1" v-for="rasa in info.Infogempa.gempa.Dirasakan._text.split(',')" :key="rasa.index">
                       {{rasa}}
                     </span>
                   </p>
                 </div>
               </div>
-            
+
           </div>
-          <CoolLightBox 
-            :items="items" 
+          <CoolLightBox
+            :items="items"
             :index="index"
             @close="index = null">
           </CoolLightBox>
@@ -118,7 +118,7 @@ export default {
     }
   },
   async mounted(){
-      this.info = await (await axios.get("https://data-gempa-terkini.herokuapp.com/autogempa")).data
+      this.info = await (await axios.get("https://data-gempa-terkini.onrender.com/autogempa")).data
       // this.info = JSON.parse(xmljs.xml2json(data,{compact:true,spaces:2}))
       this.items.push(`https://data.bmkg.go.id/DataMKG/TEWS/${this.info.Infogempa.gempa.Shakemap._text}`)
   },
@@ -128,7 +128,7 @@ export default {
 <style scoped>
 .images-wrapper {
   display: flex;
-  justify-content:center;  
+  justify-content:center;
 }
 
 
@@ -140,7 +140,7 @@ export default {
   }
 }
 @media only screen and (min-width: 600px) {
- 
+
 .images-wrapper .image {
   min-width: 600px;
   min-height: 720px;

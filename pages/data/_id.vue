@@ -7,8 +7,8 @@
         </svg>
         Loading
       </button>
-    </div>  
-  
+    </div>
+
     <div v-if="data_gempa != null" class="flex-wrap lg:flex py-5 items-center justify-center space-x-10">
       <div>
         <iframe class="google-maps mx-auto"
@@ -17,8 +17,8 @@
         </iframe>
       </div>
       <div>
-        <CoolLightBox 
-          :items="items" 
+        <CoolLightBox
+          :items="items"
           :index="index"
           @close="index = null">
         </CoolLightBox>
@@ -34,8 +34,8 @@
         </div>
       </div>
     </div>
-          
-          
+
+
   </div>
 </template>
 
@@ -51,7 +51,7 @@ data(){
   }
 },
 async mounted(){
-  this.data_gempa = await (await axios.get("https://data-gempa-terkini.herokuapp.com/")).data
+  this.data_gempa = await (await axios.get("https://data-gempa-terkini.onrender.com/")).data
   console.log(this.data_gempa);
   this.items.push(`https://data.bmkg.go.id/DataMKG/TEWS/${this.data_gempa[this.$route.params.id - 1].detail.map}`)
 }

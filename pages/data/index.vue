@@ -1,6 +1,6 @@
 <template>
   <div class="bg-gray-300 min-h-screen pb-32">
-    
+
     <div>
       <div class="text-center py-5">
         <h1 class="font-medium text-2xl">Data gempa tekini</h1>
@@ -33,7 +33,7 @@
             </tr>
           </tbody>
         </table>
-        
+
         <div v-if="data_gempa == null" class="flex flex-col justify-center items-center w-screen min-h-screen">
           <button type="button" class="bg-gray-100 flex p-2 rounded-md mb-5" disabled>
           <svg xmlns="http://www.w3.org/2000/svg" class="animate-spin mr-3 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -43,7 +43,7 @@
           </button>
         </div>
       </div>
-    </div>  
+    </div>
   </div>
 </template>
 
@@ -57,7 +57,7 @@ data(){
   }
 },
 async mounted(){
-  this.data_gempa = await (await axios.get("https://data-gempa-terkini.herokuapp.com/")).data
+  this.data_gempa = await (await axios.get("https://data-gempa-terkini.onrender.com/")).data
 }
 }
 </script>
